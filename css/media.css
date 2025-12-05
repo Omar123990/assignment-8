@@ -22,10 +22,6 @@
     height: auto !important;
     min-height: 100vh;
   }
-  html,
-  body {
-    overflow-y: auto;
-  }
 
   main section {
     height: auto !important;
