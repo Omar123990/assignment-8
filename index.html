@@ -210,81 +210,81 @@
                 <div class="tab-pane fade" id="tab-nutrition-btn-pane" role="tabpanel"
                   aria-labelledby="tab-nutrition-btn" tabindex="0">
                   <div id="tab-nutrition-content" class="row gy-3">
-                    <div class="col-6">
-                      <div class="wrapper p-2 bg-blue rounded-3">
-                        <div class="d-flex nutrition-block justify-content-between">
+                    <div class="col-md-6">
+                      <div class="wrapper p-3 h-100 bg-blue rounded-3">
+                        <div class="d-flex justify-content-between">
                           <div class="d-flex align-items-center">
                             <div class="me-2 p-3 rounded-3 bg-red">
                               <i class="fa-solid fa-fire color-red"></i>
                             </div>
                             <span class="fw-bolder text-black text-opacity-75">Calories</span>
                           </div>
-                          <span class="fw-700 align-self-center d-flex"><span>520</span> <span>kcal</span></span>
+                          <span id="calories" class="fw-700 align-self-center">520kcal</span>
                         </div>
                       </div>
                     </div>
-                    <div class="col-6">
-                      <div class="wrapper p-2 bg-blue rounded-3">
-                        <div class="d-flex nutrition-block justify-content-between">
+                    <div class="col-md-6">
+                      <div class="wrapper p-3 h-100 bg-blue rounded-3">
+                        <div class="d-flex  justify-content-between">
                           <div class="d-flex align-items-center">
                             <div class="me-2 p-3 rounded-3 bg-blue-icon">
                               <i class="fa-solid fa-dumbbell color-blue"></i>
                             </div>
                             <span class="fw-bolder text-black text-opacity-75">Protein</span>
                           </div>
-                          <span class="fw-700 align-self-center">28g</span>
+                          <span id="protein" class="fw-700 align-self-center">28g</span>
                         </div>
                       </div>
                     </div>
-                    <div class="col-6">
-                      <div class="wrapper p-2 bg-blue rounded-3">
-                        <div class="d-flex nutrition-block justify-content-between">
+                    <div class="col-md-6">
+                      <div class="wrapper p-3 h-100 bg-blue rounded-3">
+                        <div class="d-flex  nutrition-block  justify-content-between">
                           <div class="d-flex align-items-center">
                             <div class="me-2 p-3 rounded-3 bg-yellow">
                               <i class="fa-solid fa-wheat-awn color-yellow"></i>
                             </div>
                             <span class="fw-bolder text-black text-opacity-75">Carbohydrates</span>
                           </div>
-                          <span class="fw-700 align-self-center d-flex">62g</span>
+                          <span id="carbon" class="fw-700 align-self-center d-flex">62g</span>
                         </div>
                       </div>
                     </div>
-                    <div class="col-6">
-                      <div class="wrapper p-2 bg-blue rounded-3">
-                        <div class="d-flex nutrition-block justify-content-between">
+                    <div class="col-md-6">
+                      <div class="wrapper p-3 h-100 bg-blue rounded-3">
+                        <div class="d-flex  justify-content-between">
                           <div class="d-flex align-items-center">
                             <div class="me-2 p-3 rounded-3 bg-red">
                               <i class="fa-solid fa-droplet color-red"></i>
                             </div>
                             <span class="fw-bolder text-black text-opacity-75">Fat</span>
                           </div>
-                          <span class="fw-700 align-self-center d-flex">18g</span>
+                          <span id="fat" class="fw-700 align-self-center d-flex">18g</span>
                         </div>
                       </div>
                     </div>
-                    <div class="col-6">
-                      <div class="wrapper p-2 bg-blue rounded-3">
-                        <div class="d-flex nutrition-block justify-content-between">
+                    <div class="col-md-6">
+                      <div class="wrapper p-3 h-100 bg-blue rounded-3">
+                        <div class="d-flex  justify-content-between">
                           <div class="d-flex align-items-center">
                             <div class="me-2 p-3 rounded-3 bg-green">
                               <i class="fa-solid fa-seedling color-green"></i>
                             </div>
                             <span class="fw-bolder text-black text-opacity-75">Fiber</span>
                           </div>
-                          <span class="fw-700 align-self-center d-flex">3g</span>
+                          <span id="fiber" class="fw-700 align-self-center d-flex">3g</span>
                         </div>
                       </div>
                     </div>
-                    <div class="col-6">
-                      <div class="wrapper p-2 bg-blue rounded-3">
-                        <div class="d-flex nutrition-block justify-content-between">
+                    <div class="col-md-6">
+                      <div class="wrapper p-3 h-100 bg-blue rounded-3">
+                        <div class="d-flex  justify-content-between">
                           <div class="d-flex align-items-center">
                             <div class="me-2 p-3 rounded-3 bg-pink">
                               <i class="fa-solid fa-cube color-pink"></i>
                             </div>
                             <span class="fw-bolder text-black text-opacity-75">Sodium</span>
                           </div>
-                          <span class="fw-700 align-self-center d-flex">680mg</span>
+                          <span id="sodium" class="fw-700 align-self-center d-flex">680mg</span>
                         </div>
                       </div>
                     </div>
@@ -332,7 +332,7 @@
                 </div>
               </div>
               <div class="pt-4 mt-32 border-1 border-top border-secondary-subtle">
-                <button id="next-recipe-btn" class="bg-button-liner mb-4 text-white border-0 rounded-3">
+                <button onclick="updateRecipe()" id="next-recipe-btn" class="bg-button-liner mb-4 text-white border-0 rounded-3">
                   <i class="fa-solid fa-rotate"></i> Try Another Recipe
                 </button>
               </div>
