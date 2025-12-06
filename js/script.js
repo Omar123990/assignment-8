@@ -28,7 +28,7 @@ var recipes = [
       "Serve immediately with extra cheese.",
     ],
     nutrition: {
-      Calories: "520 kcal",
+      Calories: "520kcal",
       Protein: "28g",
       Carbohydrates: "62g",
       Fat: "18g",
@@ -484,7 +484,7 @@ var recipes = [
   },
 ];
 
-//تحديث البيانات
+
 var recipeImage = document.getElementById("recipe-image");
 var recipeRating = document.getElementById("recipe-rating");
 var recipeReviews = document.getElementById("recipe-reviews");
@@ -501,108 +501,58 @@ var nutritionContainer = document.getElementById("tab-nutrition-content");
 var chefsTipsContainer = document.getElementById("tab-chefs-content");
 var nextRecipeBtn = document.getElementById("next-recipe-btn");
 var longPrepMsg = document.getElementById("long-prep-msg");
+var calories = document.getElementById("calories");
+var protein = document.getElementById("protein");
+var carbon = document.getElementById("carbon");
+var fat = document.getElementById("fat");
+var fiber = document.getElementById("fiber");
+var sodium = document.getElementById("sodium");
 
-// ====== أيقونات Nutrition ======
-var nutritionIcons = {
-  Calories: { icon: "fa-fire", colorClass: "red", bgClass: "bg-red" },
-  Protein: { icon: "fa-dumbbell", colorClass: "blue", bgClass: "bg-blue-icon" },
-  Carbohydrates: {
-    icon: "fa-wheat-awn",
-    colorClass: "yellow",
-    bgClass: "bg-yellow",
-  },
-  Fat: { icon: "fa-droplet", colorClass: "red", bgClass: "bg-red" },
-  Fiber: { icon: "fa-seedling", colorClass: "green", bgClass: "bg-green" },
-  Sodium: { icon: "fa-cube", colorClass: "pink", bgClass: "bg-pink" },
-};
-
-// ====== متغير لتعقب الوجبة الحالية ======
 var currentRecipeIndex = 0;
 
-// ====== دالة لتحديث كل المحتوى ======
-function updateRecipe(index) {
-  var recipe = recipes[index];
+function updateRecipe() {
+  var randomIndex = Math.floor(Math.random() * recipes.length);
+  var recipe = recipes[randomIndex];
 
-  // تحديث الصورة والنصوص
   recipeImage.src = recipe.image;
-  recipeImage.alt = recipe.name;
-  recipeRating.innerText = recipe.rating;
-  recipeReviews.innerText = recipe.reviews;
-  prepTime.innerText = recipe.prepTime;
-  cookTime.innerText = recipe.cookTime;
-  servings.innerText = recipe.servings;
-  difficulty.innerText = recipe.difficulty;
-  cuisine.innerText = recipe.cuisine;
-  recipeName.innerText = recipe.name;
-  recipeDescription.innerText = recipe.description;
 
-  // إظهار أو إخفاء رسالة Prep Time > 45
-  var cookMinutes = parseInt(recipe.cookTime);
-  longPrepMsg.style.display = cookMinutes > 45 ? "block" : "none";
+  recipeRating.innerHTML = recipe.rating;
+  recipeReviews.innerHTML = recipe.reviews;
+  prepTime.innerHTML = recipe.prepTime;
+  cookTime.innerHTML = recipe.cookTime;
+  servings.innerHTML = recipe.servings;
+  difficulty.innerHTML = recipe.difficulty;
+  cuisine.innerHTML = recipe.cuisine;
+  recipeName.innerHTML = recipe.name;
+  recipeDescription.innerHTML = recipe.description;
 
-  // ====== تحديث Ingredients ======
   ingredientsList.innerHTML = "";
-  recipe.ingredients.forEach((item) => {
+  for (var i = 0; i < recipe.ingredients.length; i++) {
     var li = document.createElement("li");
-    li.innerText = item;
+    li.innerHTML = recipe.ingredients[i];
     ingredientsList.appendChild(li);
-  });
+  }
 
-  // ====== تحديث Instructions ======
   instructionsList.innerHTML = "";
-  recipe.instructions.forEach((item) => {
+  for (var i = 0; i < recipe.instructions.length; i++) {
     var li = document.createElement("li");
-    li.innerText = item;
+    li.innerHTML = recipe.instructions[i];
     instructionsList.appendChild(li);
-  });
+  }
 
-  // ====== تحديث Nutrition ======
-  nutritionContainer.innerHTML = "";
-  Object.entries(recipe.nutrition).forEach(([key, value]) => {
-    var { icon, colorClass, bgClass } = nutritionIcons[key] || {
-      icon: "fa-circle-info",
-      colorClass: "gray",
-      bgClass: "bg-gray",
-    };
-    var col = document.createElement("div");
-    col.className = "col-6";
-    col.innerHTML = `
-      <div class="wrapper p-2 bg-blue rounded-3">
-        <div class="d-flex justify-content-between">
-          <div class="d-flex align-items-center">
-            <div class="me-2 p-3 rounded-3 ${bgClass}">
-              <i class="fa-solid ${icon} color-${colorClass}"></i>
-            </div>
-            <span class="fw-bolder text-black text-opacity-75">${key}</span>
-          </div>
-          <span class="fw-700 align-self-center d-flex">${value}</span>
-        </div>
-      </div>
-    `;
-    nutritionContainer.appendChild(col);
-  });
+    if (parseInt(recipe.cookTime) > 45) {
+    longPrepMsg.style.display = "block";
+  } else {
+    longPrepMsg.style.display = "none";
+  }
 
-  // ====== تحديث Chef's Tips ======
-  chefsTipsContainer.innerHTML = "";
-  recipe.chefsTips.forEach((tip) => {
-    var div = document.createElement("div");
-    div.className = "d-flex border-color-orange bg-red mb-3 p-3 rounded-3";
-    div.innerHTML = `<i class="fa-solid fa-circle-check align-self-center me-2 color-yellow fw-700"></i>
-                     <p class="text-black text-opacity-75">${tip}</p>`;
-    chefsTipsContainer.appendChild(div);
-  });
+  calories.innerHTML = recipe.nutrition.Calories;
+  protein.innerHTML = recipe.nutrition.Protein;
+  carbon.innerHTML = recipe.nutrition.Carbohydrates;
+  fat.innerHTML = recipe.nutrition.Fat;
+  fiber.innerHTML = recipe.nutrition.Fiber;
+  sodium.innerHTML = recipe.nutrition.Sodium;
 }
 
-// ====== زرار "Try Another Recipe" ======
-nextRecipeBtn.addEventListener("click", () => {
-  // اختيار وجبة عشوائية مختلفة عن الحالية
-  let randomIndex;
-  do {
-    randomIndex = Math.floor(Math.random() * recipes.length);
-  } while (randomIndex === currentRecipeIndex);
-  currentRecipeIndex = randomIndex;
-  updateRecipe(currentRecipeIndex);
-});
+updateRecipe();
 
-// ====== تهيئة الصفحة لأول وجبة ======
-updateRecipe(currentRecipeIndex);
